@@ -1,0 +1,44 @@
+
+parameters:
+  - name: webproject
+    displayName: build the project
+    type: string
+    default: '**/*.csproj'
+  - name: testproject
+    displayName: unit test
+    type: string
+    default: '**/*Tests.csproj' 
+  - name: runtests
+    type: boolean
+    default: 'true'    
+
+
+
+
+
+
+steps:
+
+  - task: DotNetCoreCLI@2 
+    displayName: 'project test'
+    inputs: 
+      command: 'test'
+      projects: ${{ parameters.testproject}} 
+    condition: eq( ${{parameters.runtests}}, true )
+
+
+  - task: DotNetCoreCLI@2 
+    displayName: 'project build'
+    inputs:
+      command: 'build'
+      projects: ${{ parameters.webproject}}
+
+  - task: DotNetCoreCLI@2 
+    displayName: 'project publish'
+    inputs:
+      command: 'publish'
+      projects: ${{ parameters.webproject}}
+
+       
+
+  
