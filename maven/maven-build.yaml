@@ -1,0 +1,28 @@
+parameters:
+  -name: webproject
+   displayName: compile the code
+   type: string
+   default: package
+  -name: TestfileResults
+   displayname: test the code
+   type: string
+   default: '**/surefire-reports/TEST-*.xml'
+    
+
+
+tests:
+
+  - task: Maven@4
+    displayName: compile the code
+    inputs:
+      mavenPOMFile: 'pom.xml'
+      goals: ${{ parameters.webproject}}
+  - task: Maven@4
+    displayName: test the code
+    inputs:
+      mavenPOMFile: 'pom.xml'
+      goals: ${{ parameters.webproject}}
+      publishJUnitResults: true
+      TestfileResults: ${{ parameters.TestfileResults}}
+            
+      
