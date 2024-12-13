@@ -1,12 +1,12 @@
 parameters:
-  -name: webproject
-   displayName: 'compilethecode'
-   type: string
-   default: package
-  -name: TestfileResults
-   displayname: 'testthecode'
-   type: string
-   default: '**/surefire-reports/TEST-*.xml'
+  - name: webproject
+    displayName: 'compilethecode'
+    type: string
+    default: package
+  - name: TestfileResults
+    displayname: 'testthecode'
+    type: string
+    default: '**/surefire-reports/TEST-*.xml'
     
 
 
