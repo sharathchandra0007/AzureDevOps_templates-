@@ -4,14 +4,13 @@ parameters:
     type: string
     default: package
   - name: TestfileResults
-    displayname: 'testthecode'
+    displayName: 'testthecode'
     type: string
     default: '**/surefire-reports/TEST-*.xml'
     
 
 
-tests:
-
+steps:
   - task: Maven@4
     displayName: compile the code
     inputs:
