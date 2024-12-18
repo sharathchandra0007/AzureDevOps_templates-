@@ -1,0 +1,5 @@
+steps:
+  - template: ./maven-build.yaml@reusabletemplates
+    parameters:
+      webproject: 'package'
+      TestfileResults: '**/surefire-reports/TEST-*.xml' 
