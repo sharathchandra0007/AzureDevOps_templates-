@@ -1,0 +1,42 @@
+parameters:
+  - name: resolverservice
+    type: string
+    default: 'JFROG_CLOUD'
+  - name: ReleaseRepo
+    type: string
+    default: 'spring-petclinic-libs-release'
+  - name: SnapshotRepo
+    type: string
+    default: 'spring-petclinic-libs-snapshot'
+  - name: DeployService
+    type: string
+    default: 'JFROG_CLOUD'
+  - name: DeployReleaseRepo
+    type: string
+    default: 'spring-petclinic-libs-release'
+  - name: DeploySnapshotRepo
+    type: string
+    default: 'spring-petclinic-libs-snapshot'            
+
+
+
+
+
+
+steps:
+  - task: JFrogMaven@1
+    inputs:
+      mavenPomFile: 'pom.xml'
+      goals: 'install'
+      artifactoryResolverService: $ {{ parameters.resolverservice}}
+      targetResolveReleaseRepo: $ {{ parameters.ReleaseRepo }}
+      targetResolveSnapshotRepo: $ {{ parameters.SnapshotRepo }}
+      artifactoryDeployService: $ {{ parameters.DeployService }}
+      targetDeployReleaseRepo: $ {{ parameters.DeployReleaseRepo }}
+      targetDeploySnapshotRepo: $ {{ parameters.DeploySnapshotRepo }}
+      javaHomeOption: 'JDKVersion'
+  - task: JFrogPublishBuildInfo@1
+    inputs:
+      artifactoryConnection: 'JFROG_CLOUD'
+      buildName: '$(Build.DefinitionName)'
+      buildNumber: '$(Build.BuildNumber)'
