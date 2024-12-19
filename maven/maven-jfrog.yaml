@@ -28,7 +28,7 @@ steps:
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'install'
-      artifactoryResolverService: $ {{ parameters.resolverservice}}
+      artifactoryResolverService: $ {{ parameters.resolverservice }}
       targetResolveReleaseRepo: $ {{ parameters.ReleaseRepo }}
       targetResolveSnapshotRepo: $ {{ parameters.SnapshotRepo }}
       artifactoryDeployService: $ {{ parameters.DeployService }}
