@@ -1,5 +1,5 @@
 parameters:
-  - name: resolverservice
+  - name: artifactoryResolverService
     type: string
     default: 'JFROG_CLOUD'
   - name: ReleaseRepo
@@ -20,15 +20,15 @@ steps:
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'install'
-      artifactoryResolverService: $ {{ parameters.resolverservice }}
+      artifactoryResolverService: $ {{ parameters.artifactoryResolverService }}
       targetResolveReleaseRepo: $ {{ parameters.ReleaseRepo }}
       targetResolveSnapshotRepo: $ {{ parameters.SnapshotRepo }}
-      artifactoryDeployService: $ {{ parameters.resolverservice }}
+      artifactoryDeployService: $ {{ parameters.artifactoryResolverService }}
       targetDeployReleaseRepo: $ {{ parameters.DeployReleaseRepo }}
       targetDeploySnapshotRepo: $ {{ parameters.DeploySnapshotRepo }}
       javaHomeOption: 'JDKVersion'
   - task: JFrogPublishBuildInfo@1
     inputs:
-      artifactoryConnection: $ {{ parameters.resolverservice }}
+      artifactoryConnection: $ {{ parameters.artifactoryResolverService }}
       buildName: '$(Build.DefinitionName)'
       buildNumber: '$(Build.BuildNumber)'
