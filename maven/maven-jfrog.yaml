@@ -18,15 +18,15 @@ parameters:
 steps:
   - task: JFrogMaven@1
     inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'install'
-    artifactoryResolverService: ${{ parameters.artifactoryResolver }}
-    targetResolveReleaseRepo: ${{ parameters.ReleaseRepo }}
-    targetResolveSnapshotRepo: ${{ parameters.SnapshotRepo }}
-    artifactoryDeployService: ${{ parameters.artifactoryResolver }}
-    targetDeployReleaseRepo: ${{ parameters.DeployReleaseRepo }}
-    targetDeploySnapshotRepo: ${{ parameters.DeploySnapshotRepo }}
-    javaHomeOption: 'JDKVersion'
+        mavenPomFile: 'pom.xml'
+        goals: 'install'
+        artifactoryResolverService: ${{ parameters.artifactoryResolver }}
+        targetResolveReleaseRepo: ${{ parameters.ReleaseRepo }}
+        targetResolveSnapshotRepo: ${{ parameters.SnapshotRepo }}
+        artifactoryDeployService: ${{ parameters.artifactoryResolver }}
+        targetDeployReleaseRepo: ${{ parameters.DeployReleaseRepo }}
+        targetDeploySnapshotRepo: ${{ parameters.DeploySnapshotRepo }}
+        javaHomeOption: 'JDKVersion'
 
   - task: JFrogPublishBuildInfo@1
     inputs:
