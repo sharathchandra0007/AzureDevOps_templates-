@@ -22,6 +22,6 @@ steps:
       mavenPOMFile: 'pom.xml'
       goals: ${{ parameters.webproject}}
       publishJUnitResults: true
-      sonarQubeRunAnalysis: true 
+      sonarQubeRunAnalysis: true
       TestfileResults: ${{ parameters.TestfileResults}}                      
       
